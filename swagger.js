@@ -1,7 +1,7 @@
 const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
 
-// Swagger definition
+
 const swaggerOptions = {
   definition: {
     openapi: "3.0.0",
@@ -12,11 +12,11 @@ const swaggerOptions = {
     },
     servers: [
       {
-        url: "http://localhost:3000", // update port if different
+        url: "http://localhost:3000", 
       },
     ],
   },
-  apis: ["./routes/*.js"], // path to your route files with Swagger comments
+  apis: ["./routes/*.js"],
 };
 
 const swaggerSpec = swaggerJsDoc(swaggerOptions);
