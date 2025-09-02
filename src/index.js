@@ -1,15 +1,18 @@
-require("dotenv").config();
 const express = require("express");
-const connectDB = require("./config/db");
+const mongoose = require("mongoose");
+const { swaggerUi, swaggerSpec } = require("../swagger");
 
 const app = express();
-connectDB();
 app.use(express.json());
-app.use("/api/auth", require("./routes/auth"));
 
-if (require.main === module) {
-  const PORT = process.env.PORT || 3000;
-  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-}
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-module.exports = app; 
+const authRoutes = require("./routes/auth");
+app.use("/auth", authRoutes);
+
+mongoose.connect("mongodb://localhost:27017/auth-service")
+  .then(() => {
+    console.log("MongoDB connected");
+    app.listen(3000, () => console.log("Server running on port 3000"));
+  })
+  .catch(err => console.error(err));
