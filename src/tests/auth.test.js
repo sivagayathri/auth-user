@@ -8,7 +8,7 @@ beforeAll(async () => {
 });
 
 afterAll(async () => {
-  await User.deleteMany({}); // clean up
+  await User.deleteMany({}); 
   await mongoose.connection.close();
 });
 
