@@ -25,7 +25,7 @@ app.use("/auth", authRoutes);
 
 mongoose.connect("mongodb://mongo:27017/auth-service")
   .then(() => {
-    console.log("✅ MongoDB connected");
-    app.listen(3000, () => console.log("🚀 Server running on port 3000"));
+    console.log("MongoDB connected");
+    app.listen(3000, () => console.log("Server running on port 3000"));
   })
   .catch(err => console.error("DB Connection Error:", err));

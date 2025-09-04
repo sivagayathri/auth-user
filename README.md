@@ -70,3 +70,8 @@ Request Body
 Responses
 200	Login successful, JWT returned	
 401	Unauthorized (invalid credentials)
+
+
+.env variables
+JWT_SECRET=supersecretkey
+PORT=3000
